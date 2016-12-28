@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0-*",
+  "title": "HelpDesk.StatusManagementSystem",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true
+  },
+  "dependencies": {
+    "Autofac": "4.2.1",
+    "AutoMapper": "5.2.0",
+    "Nancy": "2.0.0-barneyrubble",
+    "NLog.Extensions.Logging": "1.0.0-*",
+    "Microsoft.AspNetCore.Hosting": "1.1.0",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
+    "Microsoft.AspNetCore.Owin": "1.1.0",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.1.0",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.1.0",
+    "Microsoft.Extensions.Configuration.Json": "1.1.0",
+    "Microsoft.EntityFrameworkCore": "1.1.0",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+    "Exceptionless": "4.0.1924",
+    "Coolector.Common": "1.0.*",
+    "NETStandard.Library": "1.6.1",
+    "Polly": "5.0.1-v5-0-alpha0001"
+  },
+  
+	"frameworks": {
+		"netcoreapp1.1": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.1.0"
+        }
+      },
+			"imports": [
+				"dotnet5.6",
+				"dnxcore50"
+			]
+		}
+	},
+
+	"publishOptions": {
+		"include": [
+			"nlog.config",
+			"appsettings.json"
+		]
+	}
+  //"frameworks": {
+  //  "netstandard1.6": {}
+  //}
+  //"frameworks": {
+  //  "netcoreapp1.1": {
+  //    "dependencies": {
+  //      "Microsoft.NETCore.App": {
+  //        "type": "platform",
+  //        "version": "1.1.0"
+  //      }
+  //    },
+  //    "imports": "dnxcore50"
+  //  }
+  //}
+}
