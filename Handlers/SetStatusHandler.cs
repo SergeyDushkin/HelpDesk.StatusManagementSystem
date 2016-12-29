@@ -3,6 +3,7 @@ using Coolector.Common.Commands;
 using Coolector.Common.Services;
 using RawRabbit;
 using servicedesk.StatusManagementSystem.Commands;
+using servicedesk.StatusManagementSystem.Events;
 using servicedesk.StatusManagementSystem.Services;
 
 namespace servicedesk.StatusManagementSystem.Handlers
@@ -26,6 +27,7 @@ namespace servicedesk.StatusManagementSystem.Handlers
         {
             await _handler
                 .Run(async () => await _statusManager.SetNextStatusAsync(command.SourceId, command.ReferenceId, command.StatusId, command.UserId, command.Message))
+                .OnSuccess(async () => await _bus.PublishAsync(new NextStatusSet(command.Request.Id, command.SourceId, command.ReferenceId, command.StatusId)))
                 .OnCustomError((ex, logger) => logger.Error(ex, "Error when trying to set new status."))
                 .OnError((ex, logger) => logger.Error(ex, "Error when trying to set new status."))
                 .ExecuteAsync();
