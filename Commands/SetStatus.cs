@@ -12,4 +12,12 @@ namespace servicedesk.StatusManagementSystem.Commands
         public string UserId { get; set; }
         public string Message { get; set; }
     }
+    public interface ISetStatus : ICommand
+    {
+        Guid SourceId { get; set; }
+        Guid ReferenceId { get; set; }
+        Guid StatusId { get; set; }
+        string UserId { get; set; }
+        string Message { get; set; }
+    }
 }
