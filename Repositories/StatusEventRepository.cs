@@ -5,12 +5,15 @@ using Coolector.Common.Types;
 using servicedesk.StatusManagementSystem.Dal;
 using servicedesk.StatusManagementSystem.Domain;
 using servicedesk.StatusManagementSystem.Repositories.Queries;
+using NLog;
 
 namespace servicedesk.StatusManagementSystem.Repositories
 {
     public class StatusEventRepository : IStatusEventRepository
     {        
         private readonly StatusDbContext _database;
+        
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         public StatusEventRepository(StatusDbContext database)
         {
@@ -25,6 +28,8 @@ namespace servicedesk.StatusManagementSystem.Repositories
 
         public async Task AddAsync(StatusEvent statusEvent) 
         {
+            Logger.Info("Add Statis event: {0}", Newtonsoft.Json.JsonConvert.SerializeObject(statusEvent));
+
             await _database.StatusEvents.AddAsync(statusEvent);
             await _database.SaveChangesAsync();
         }

@@ -33,7 +33,7 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
-      "Coolector.Common/1.0.69": {
+      "Coolector.Common/1.0.78": {
         "type": "package",
         "dependencies": {
           "AutoMapper": "5.2.0",
@@ -49,9 +49,12 @@
           "MongoDB.Driver": "2.4.0",
           "NLog.Extensions.Logging": "1.0.0-rtm-alpha5",
           "Nancy": "2.0.0-barneyrubble",
+          "Nancy.Authentication.Stateless": "2.0.0-barneyrubble",
           "Newtonsoft.Json": "9.0.1",
+          "Polly": "5.0.1-v5-0-alpha0001",
           "RawRabbit": "1.10.3",
-          "RawRabbit.vNext": "1.10.3"
+          "RawRabbit.vNext": "1.10.3",
+          "jose-jwt": "2.1.0"
         },
         "compile": {
           "lib/netstandard1.6/Coolector.Common.dll": {}
@@ -97,6 +100,24 @@
         },
         "runtime": {
           "lib/netstandard1.0/Humanizer.dll": {}
+        }
+      },
+      "jose-jwt/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Runtime.Serialization.Primitives": "4.1.1",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Cng": "4.2.0",
+          "System.Security.Cryptography.Csp": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.4/jose-jwt.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/jose-jwt.dll": {}
         }
       },
       "Libuv/1.9.1": {
@@ -1055,6 +1076,18 @@
           "lib/netstandard1.6/Nancy.dll": {}
         }
       },
+      "Nancy.Authentication.Stateless/2.0.0-barneyrubble": {
+        "type": "package",
+        "dependencies": {
+          "Nancy": "2.0.0-barneyrubble"
+        },
+        "compile": {
+          "lib/netstandard1.6/Nancy.Authentication.Stateless.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Nancy.Authentication.Stateless.dll": {}
+        }
+      },
       "NETStandard.Library/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -1485,6 +1518,19 @@
             "assetType": "native",
             "rid": "win7-x86"
           }
+        }
+      },
+      "ServiceDesk.Common/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Coolector.Common": "1.0.78",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/ServiceDesk.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/ServiceDesk.Common.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -2986,7 +3032,7 @@
           "System.Text.Encoding": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
@@ -3017,7 +3063,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Security.Cryptography.Csp.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Cryptography.Csp.dll": {
@@ -3635,12 +3681,12 @@
         "lib/netstandard1.3/AutoMapper.xml"
       ]
     },
-    "Coolector.Common/1.0.69": {
-      "sha512": "ewyJ+n7f8M/MdM+mgsRbVNF3heEGyhW+Rb2uwBeDNPgFnC5UuKWl2TIPv4ZW9kfs4spWEdO+mJ3Wki08OsN8ag==",
+    "Coolector.Common/1.0.78": {
+      "sha512": "XuaT8Y0CZz833mgC+4NIpCWoNkw2HzTdwyKKIXS47CMkX13+Gc6vxuyqJo4DJ4dInvKS3heGvyEwDpHlDcaMVw==",
       "type": "package",
-      "path": "Coolector.Common/1.0.69",
+      "path": "Coolector.Common/1.0.78",
       "files": [
-        "Coolector.Common.1.0.69.nupkg.sha512",
+        "Coolector.Common.1.0.78.nupkg.sha512",
         "Coolector.Common.nuspec",
         "lib/netstandard1.6/Coolector.Common.dll"
       ]
@@ -3680,6 +3726,18 @@
         "lib/netstandard1.0/Humanizer.dll",
         "lib/netstandard1.0/Humanizer.pdb",
         "lib/netstandard1.0/Humanizer.xml"
+      ]
+    },
+    "jose-jwt/2.1.0": {
+      "sha512": "tBxC0slel6aKKD6lBIpzTG3jqzu88m0stXI2lue2Ca9rn+d4+bvHr1XPRL+5FJjw3GbqF/GIEngHFhBIy9FaqA==",
+      "type": "package",
+      "path": "jose-jwt/2.1.0",
+      "files": [
+        "jose-jwt.2.1.0.nupkg.sha512",
+        "jose-jwt.nuspec",
+        "lib/net40/jose-jwt.dll",
+        "lib/net461/jose-jwt.dll",
+        "lib/netstandard1.4/jose-jwt.dll"
       ]
     },
     "Libuv/1.9.1": {
@@ -4543,6 +4601,19 @@
         "lib/netstandard1.6/Nancy.xml"
       ]
     },
+    "Nancy.Authentication.Stateless/2.0.0-barneyrubble": {
+      "sha512": "uS6RKZ9/+TLu4U/CNN5zN4sC5ahYZ7vc2UoM2CZZ8oPr4kSnVw8OhBx2SsCHIb9RsVYcQgCCwQSPhG+/2b1JOw==",
+      "type": "package",
+      "path": "Nancy.Authentication.Stateless/2.0.0-barneyrubble",
+      "files": [
+        "Nancy.Authentication.Stateless.2.0.0-barneyrubble.nupkg.sha512",
+        "Nancy.Authentication.Stateless.nuspec",
+        "lib/net452/Nancy.Authentication.Stateless.dll",
+        "lib/net452/Nancy.Authentication.Stateless.xml",
+        "lib/netstandard1.6/Nancy.Authentication.Stateless.dll",
+        "lib/netstandard1.6/Nancy.Authentication.Stateless.xml"
+      ]
+    },
     "NETStandard.Library/1.6.1": {
       "sha512": "WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
       "type": "package",
@@ -4927,6 +4998,16 @@
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.4.3.0.nupkg.sha512",
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.nuspec",
         "runtimes/win7-x86/native/sni.dll"
+      ]
+    },
+    "ServiceDesk.Common/1.0.1": {
+      "sha512": "d2orZoCzz7MSaQd6RVLd+AY7EwWntm8Q79F2Q89YVmh//A2LO0e7c6Jtapk0qZvvIEpE3cWZhCzST6G9/uCC5A==",
+      "type": "package",
+      "path": "ServiceDesk.Common/1.0.1",
+      "files": [
+        "ServiceDesk.Common.1.0.1.nupkg.sha512",
+        "ServiceDesk.Common.nuspec",
+        "lib/netstandard1.6/ServiceDesk.Common.dll"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -9870,7 +9951,8 @@
       "NETStandard.Library >= 1.6.1",
       "NLog.Extensions.Logging >= 1.0.0-*",
       "Nancy >= 2.0.0-barneyrubble",
-      "Polly >= 5.0.1-v5-0-alpha0001"
+      "Polly >= 5.0.1-v5-0-alpha0001",
+      "ServiceDesk.Common >= 1.0.1"
     ],
     ".NETCoreApp,Version=v1.1": [
       "Microsoft.NETCore.App >= 1.1.0"

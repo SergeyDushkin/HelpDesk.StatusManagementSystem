@@ -27,6 +27,7 @@ namespace servicedesk.StatusManagementSystem.Domain
 
         public StatusEvent(Guid referenceId, Guid statusSourceId, Guid statusId, string userId, DateTime createdAt)
         {
+            Id = Guid.Empty;
             ReferenceId = referenceId;
             StatusSourceId = statusSourceId;
             StatusId = statusId;

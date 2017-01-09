@@ -21,7 +21,9 @@
     "Exceptionless": "4.0.1924",
     "Coolector.Common": "1.0.*",
     "NETStandard.Library": "1.6.1",
-    "Polly": "5.0.1-v5-0-alpha0001"
+    "Polly": "5.0.1-v5-0-alpha0001",
+    
+    "ServiceDesk.Common": "1.0.1"
   },
   
 	"frameworks": {

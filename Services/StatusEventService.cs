@@ -25,6 +25,7 @@ namespace servicedesk.StatusManagementSystem.Services
         {
             var statusEvent = new StatusEvent(referenceId, sourceId, statusId, userId, createdAt);
             statusEvent.SetMessage(message);
+            statusEvent.SetCode("200");
             
             await _statusEventRepository.AddAsync(statusEvent);
         }

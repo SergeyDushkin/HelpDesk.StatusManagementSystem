@@ -1,5 +1,5 @@
 ﻿using Coolector.Common.Host;
-using servicedesk.StatusManagementSystem.Commands;
+using servicedesk.Common.Commands;
 using servicedesk.StatusManagementSystem.Framework;
 
 namespace servicedesk.StatusManagementSystem
