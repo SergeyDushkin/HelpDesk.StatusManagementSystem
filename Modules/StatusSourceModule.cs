@@ -45,13 +45,31 @@ namespace servicedesk.StatusManagementSystem.Modules
                 .MapTo<StatusEventDto>()
                 .HandleAsync());
 
+            Get("{name}/{referenceId:guid}", args => FetchCollection<BrowseEventStatus, StatusEvent>
+                (async x => await statusEventService.GetAsync(x.ReferenceId))
+                .MapTo<StatusEventDto>()
+                .HandleAsync());
+
             Get("{sourceId:guid}/events/{referenceId:guid}/current", args => Fetch<GetStatusEvent, StatusEvent>
+                (async x => await statusEventService.GetCurrentAsync(x.ReferenceId))
+                .MapTo<StatusEventDto>()
+                .HandleAsync());
+
+            Get("{name}/{referenceId:guid}/current", args => Fetch<GetStatusEvent, StatusEvent>
                 (async x => await statusEventService.GetCurrentAsync(x.ReferenceId))
                 .MapTo<StatusEventDto>()
                 .HandleAsync());
 
             Get("{sourceId:guid}/events/{referenceId:guid}/next", args => FetchCollection<BrowseEventStatus, Status>
                 (async x => (await statusManager.GetNextStatuses(x.SourceId, x.ReferenceId)).PaginateWithoutLimit())
+                .MapTo<StatusDto>()
+                .HandleAsync());
+
+            Get("{name}/{referenceId:guid}/next", args => FetchCollection<BrowseEventStatus, Status>
+                (async x => {
+                    var source = await statusSourceService.GetAsync(x.Name);
+                    return (await statusManager.GetNextStatuses(source.Value.Id, x.ReferenceId)).PaginateWithoutLimit();
+                })
                 .MapTo<StatusDto>()
                 .HandleAsync());
         }
