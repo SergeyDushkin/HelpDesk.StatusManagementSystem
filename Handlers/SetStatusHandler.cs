@@ -13,18 +13,23 @@ namespace servicedesk.StatusManagementSystem.Handlers
         private readonly IHandler _handler;
         private readonly IBusClient _bus;
         private readonly IStatusManager _statusManager;
+        private readonly IStatusSourceService _statusSourceService;
 
         public SetStatusHandler(IHandler handler, 
             IBusClient bus, 
-            IStatusManager statusManager)
+            IStatusManager statusManager,
+            IStatusSourceService statusSourceService)
         {
             _handler = handler;
             _bus = bus;
             _statusManager = statusManager;
+            _statusSourceService = statusSourceService;
         }
 
         public async Task HandleAsync(SetStatus command)
         {
+            //var source = await _statusSourceService.GetAsync(command.SourceName);
+
             await _handler
                 .Run(async () => await _statusManager.SetNextStatusAsync(command.SourceId, command.ReferenceId, command.StatusId, command.UserId, command.Message))
                 .OnSuccess(async () => await _bus.PublishAsync(new NextStatusSet(command.Request.Id, command.SourceId, command.ReferenceId, command.StatusId)))
