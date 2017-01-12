@@ -33,7 +33,7 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
-      "Coolector.Common/1.0.78": {
+      "Coolector.Common/1.0.80": {
         "type": "package",
         "dependencies": {
           "AutoMapper": "5.2.0",
@@ -1520,10 +1520,10 @@
           }
         }
       },
-      "ServiceDesk.Common/1.0.1": {
+      "ServiceDesk.Common/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Coolector.Common": "1.0.78",
+          "Coolector.Common": "1.0.80",
           "NETStandard.Library": "1.6.1"
         },
         "compile": {
@@ -3681,12 +3681,12 @@
         "lib/netstandard1.3/AutoMapper.xml"
       ]
     },
-    "Coolector.Common/1.0.78": {
-      "sha512": "XuaT8Y0CZz833mgC+4NIpCWoNkw2HzTdwyKKIXS47CMkX13+Gc6vxuyqJo4DJ4dInvKS3heGvyEwDpHlDcaMVw==",
+    "Coolector.Common/1.0.80": {
+      "sha512": "9kkFZAGbOfqtSIKyE+gekDMHiVLVUtyC6uPNwPGcQuNo75t/Q/CiA7QCnSHM/qPZ33+gLsJPa3zoZN6kSgGStw==",
       "type": "package",
-      "path": "Coolector.Common/1.0.78",
+      "path": "Coolector.Common/1.0.80",
       "files": [
-        "Coolector.Common.1.0.78.nupkg.sha512",
+        "Coolector.Common.1.0.80.nupkg.sha512",
         "Coolector.Common.nuspec",
         "lib/netstandard1.6/Coolector.Common.dll"
       ]
@@ -5000,12 +5000,12 @@
         "runtimes/win7-x86/native/sni.dll"
       ]
     },
-    "ServiceDesk.Common/1.0.1": {
-      "sha512": "d2orZoCzz7MSaQd6RVLd+AY7EwWntm8Q79F2Q89YVmh//A2LO0e7c6Jtapk0qZvvIEpE3cWZhCzST6G9/uCC5A==",
+    "ServiceDesk.Common/1.0.3": {
+      "sha512": "aoC3kqOupgEvAur/gzoYG14fNqMIrUmEqDwiuSvSBJ0DTZCUPCKcJ3P7k5IEDdScYmt+zibUnhIHoDkX1ATooQ==",
       "type": "package",
-      "path": "ServiceDesk.Common/1.0.1",
+      "path": "ServiceDesk.Common/1.0.3",
       "files": [
-        "ServiceDesk.Common.1.0.1.nupkg.sha512",
+        "ServiceDesk.Common.1.0.3.nupkg.sha512",
         "ServiceDesk.Common.nuspec",
         "lib/netstandard1.6/ServiceDesk.Common.dll"
       ]
@@ -9952,7 +9952,7 @@
       "NLog.Extensions.Logging >= 1.0.0-*",
       "Nancy >= 2.0.0-barneyrubble",
       "Polly >= 5.0.1-v5-0-alpha0001",
-      "ServiceDesk.Common >= 1.0.1"
+      "ServiceDesk.Common >= 1.0.*"
     ],
     ".NETCoreApp,Version=v1.1": [
       "Microsoft.NETCore.App >= 1.1.0"

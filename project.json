@@ -23,7 +23,7 @@
     "NETStandard.Library": "1.6.1",
     "Polly": "5.0.1-v5-0-alpha0001",
     
-    "ServiceDesk.Common": "1.0.1"
+    "ServiceDesk.Common": "1.0.*"
   },
   
 	"frameworks": {

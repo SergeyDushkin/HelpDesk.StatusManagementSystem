@@ -3,7 +3,7 @@ using Coolector.Common.Commands;
 using Coolector.Common.Services;
 using RawRabbit;
 using servicedesk.Common.Commands;
-using servicedesk.StatusManagementSystem.Events;
+using servicedesk.Common.Events;
 using servicedesk.StatusManagementSystem.Services;
 
 namespace servicedesk.StatusManagementSystem.Handlers
@@ -33,23 +33,13 @@ namespace servicedesk.StatusManagementSystem.Handlers
             await _handler
                 .Run(async () => await _statusManager.SetNextStatusAsync(command.SourceId, command.ReferenceId, command.StatusId, command.UserId, command.Message))
                 .OnSuccess(async () => await _bus.PublishAsync(new NextStatusSet(command.Request.Id, command.SourceId, command.ReferenceId, command.StatusId)))
-                .OnCustomError((ex, logger) => logger.Error(ex, "Error when trying to set new status. "))
-                .OnError((ex, logger) => logger.Error(ex, "Error when trying to set new status."))
+                .OnCustomError(async (ex, logger) => await _bus.PublishAsync(new SetNewStatusRejected(command.Request.Id, "error", "Error when trying to set new status.")))
+                .OnError(async (ex, logger) => 
+                {
+                    logger.Error(ex, "Error when trying to set new status.");
+                    await _bus.PublishAsync(new SetNewStatusRejected(command.Request.Id, "error", "Error when trying to set new status."));
+                })
                 .ExecuteAsync();
         }
     }
 }
-
-/*
-await _handler
-    .Run(async () => await _statusManager.SetNewAsync(command.Email, command.Token, command.Password))
-    .OnSuccess(async () => await _bus.PublishAsync(new NewPasswordSet(command.Request.Id, command.Email)))
-    .OnCustomError(async ex => await _bus.PublishAsync(new SetNewPasswordRejected(command.Request.Id, ex.Code, ex.Message, command.Email)))
-    .OnError(async (ex, logger) =>
-    {
-        logger.Error(ex, "Error when trying to set new password.");
-        await _bus.PublishAsync(new SetNewPasswordRejected(command.Request.Id,
-            OperationCodes.Error, "Error when trying to set new password.", command.Email));
-    })
-    .ExecuteAsync()
-*/
