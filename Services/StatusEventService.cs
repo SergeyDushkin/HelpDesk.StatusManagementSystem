@@ -38,6 +38,7 @@ namespace servicedesk.StatusManagementSystem.Services
 
         private async Task UpdateAsync(Guid referenceId, Action<StatusEvent> update)
         {
+            await Task.FromResult(0);
             throw new NotImplementedException();
         }
     }

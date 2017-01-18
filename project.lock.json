@@ -1532,11 +1532,13 @@
           }
         }
       },
-      "ServiceDesk.Common/1.0.6": {
+      "ServiceDesk.Common/1.0.7": {
         "type": "package",
         "dependencies": {
           "Autofac": "4.1.0",
-          "Coolector.Common": "1.0.81",
+          "Humanizer.Core": "2.1.0",
+          "Microsoft.AspNetCore.Hosting": "1.1.0",
+          "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
           "NETStandard.Library": "1.6.1",
           "RawRabbit.Attributes": "1.10.3"
         },
@@ -5025,12 +5027,12 @@
         "runtimes/win7-x86/native/sni.dll"
       ]
     },
-    "ServiceDesk.Common/1.0.6": {
-      "sha512": "JcH2sNCCpARM2fVjQ8jhXTCsHXh1Gc2yF0dCGufoit77ferIyVjy+1RZlWuzJclsblXSrlljhunDAQIeo0xG3g==",
+    "ServiceDesk.Common/1.0.7": {
+      "sha512": "vWf6c7v7Y0iBz7dXujwRSDGIeiGJG9TyU/Bza2UvkQ215xMmFvUyGsqay3swD4cEkWYpuGbdkur0VhWf7U0sag==",
       "type": "package",
-      "path": "ServiceDesk.Common/1.0.6",
+      "path": "ServiceDesk.Common/1.0.7",
       "files": [
-        "ServiceDesk.Common.1.0.6.nupkg.sha512",
+        "ServiceDesk.Common.1.0.7.nupkg.sha512",
         "ServiceDesk.Common.nuspec",
         "lib/netstandard1.6/ServiceDesk.Common.dll"
       ]
