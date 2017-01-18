@@ -15,10 +15,13 @@ using servicedesk.StatusManagementSystem.Services;
 using servicedesk.StatusManagementSystem.Dal;
 using Microsoft.EntityFrameworkCore;
 using Nancy.Configuration;
-using RabbitMQ.Client.Exceptions;
-using System.IO;
 using Polly;
 using System;
+using System.Collections.Generic;
+using System.IO;
+
+using RabbitMQ.Client;
+using RabbitMQ.Client.Exceptions;
 using RawRabbit;
 using RawRabbit.Configuration;
 using RawRabbit.vNext;
@@ -59,6 +62,16 @@ namespace servicedesk.StatusManagementSystem.Framework
                     }
                 );
 
+                /*
+            var rmqRetryPolicy = Policy
+                .Handle<Exception>()
+                .WaitAndRetry(5, retryAttempt =>
+                    TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                    (exception, timeSpan, retryCount, context) => {
+                        Logger.Error(exception, $"Cannot connect to RabbitMQ. retryCount:{retryCount}, duration:{timeSpan}");
+                    }
+                );*/
+
             container.Update(builder =>
             {
                 var optionsBuilder = new DbContextOptionsBuilder<StatusDbContext>();
@@ -83,7 +96,18 @@ namespace servicedesk.StatusManagementSystem.Framework
                 builder.RegisterType<StatusManager>().As<IStatusManager>();
                 
                 builder.RegisterType<Handler>().As<IHandler>();
-                
+                /*
+                var rawRabbitConfiguration = _configuration.GetSettings<RawRabbitConfiguration>();
+                builder.RegisterInstance(rawRabbitConfiguration).SingleInstance();
+                rmqRetryPolicy.Execute(() => builder
+                        .RegisterInstance(new ConnectionFactory() { 
+                            Port = rawRabbitConfiguration.Port, 
+                            UserName = rawRabbitConfiguration.Username, 
+                            Password = rawRabbitConfiguration.Password }
+                        .CreateConnection(rawRabbitConfiguration.Hostnames).CreateModel())
+                        .As<IModel>()
+                );*/
+
                 var rawRabbitConfiguration = _configuration.GetSettings<RawRabbitConfiguration>();
                 builder.RegisterInstance(rawRabbitConfiguration).SingleInstance();
                 rmqRetryPolicy.Execute(() => builder
@@ -127,4 +151,50 @@ namespace servicedesk.StatusManagementSystem.Framework
             Logger.Info("servicedesk.StatusManagementSystem API has started.");
         }
     }
+
+    /*
+    public class RawRabbitConfiguration
+    {
+        public static RawRabbitConfiguration Local { get; }
+        public bool AutoCloseConnection { get; set; }
+        public bool AutomaticRecovery { get; set; }
+        public GeneralExchangeConfiguration Exchange { get; set; }
+        public TimeSpan GracefulShutdown { get; set; }
+        public List<string> Hostnames { get; set; }
+        public string Password { get; set; }
+        public bool PersistentDeliveryMode { get; set; }
+        public int Port { get; set; }
+        public TimeSpan PublishConfirmTimeout { get; set; }
+        public GeneralQueueConfiguration Queue { get; set; }
+        public TimeSpan RecoveryInterval { get; set; }
+        public TimeSpan RequestTimeout { get; set; }
+        public bool RouteWithGlobalId { get; set; }
+        public SslOption Ssl { get; set; }
+        public bool TopologyRecovery { get; set; }
+        public string Username { get; set; }
+        public string VirtualHost { get; set; }
+    }
+
+     public class GeneralExchangeConfiguration
+    {
+        public bool AutoDelete { get; set; }
+        public bool Durable { get; set; }
+        public ExchangeType Type { get; set; }
+    }
+
+    public class GeneralQueueConfiguration
+    {
+        public bool AutoDelete { get; set; }
+        public bool Durable { get; set; }
+        public bool Exclusive { get; set; }
+    }
+    
+    public enum ExchangeType
+    {
+        Unknown = 0,
+        Direct = 1,
+        Fanout = 2,
+        Headers = 3,
+        Topic = 4
+    }*/
 }

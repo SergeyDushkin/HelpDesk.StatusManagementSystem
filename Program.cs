@@ -11,8 +11,8 @@ namespace servicedesk.StatusManagementSystem
             WebServiceHost
                 .Create<Startup>(port: 10010)
                 .UseAutofac(Bootstrapper.LifeTimeScope)
-                .UseRabbitMq(queueName: typeof(Program).Namespace)
-                .SubscribeToCommand<SetStatus>("setstatus")
+                .UseRabbitMq()
+                .SubscribeToCommand<SetStatus>(exchangeName: "servicedesk.statusmanagementsystem.commands", routingKey : "setstatus.job")
                 .Build()
                 .Run();
         }

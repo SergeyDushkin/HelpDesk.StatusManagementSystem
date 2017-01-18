@@ -33,7 +33,7 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
-      "Coolector.Common/1.0.81": {
+      "Coolector.Common/1.0.82": {
         "type": "package",
         "dependencies": {
           "AutoMapper": "5.2.0",
@@ -298,6 +298,21 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.AspNetCore.Owin.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Routing.Abstractions/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Routing.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Routing.Abstractions.dll": {}
         }
       },
       "Microsoft.AspNetCore.Server.Kestrel/1.1.0": {
@@ -1170,7 +1185,7 @@
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
         }
       },
-      "NLog/5.0.0-beta03": {
+      "NLog/5.0.0-beta04": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
@@ -1181,6 +1196,7 @@
           "System.Diagnostics.Contracts": "4.0.1",
           "System.Diagnostics.StackTrace": "4.0.1",
           "System.Diagnostics.TraceSource": "4.0.0",
+          "System.IO.FileSystem.AccessControl": "4.0.0",
           "System.IO.FileSystem.Watcher": "4.0.0",
           "System.Net.NameResolution": "4.0.0",
           "System.Net.Requests": "4.0.11",
@@ -1192,6 +1208,7 @@
           "System.Threading.AccessControl": "4.0.0",
           "System.Threading.Thread": "4.0.0",
           "System.Threading.ThreadPool": "4.0.10",
+          "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XmlDocument": "4.0.1"
         },
         "compile": {
@@ -1201,18 +1218,35 @@
           "lib/netstandard1.5/NLog.dll": {}
         }
       },
-      "NLog.Extensions.Logging/1.0.0-rtm-alpha5": {
+      "NLog.Extensions.Logging/1.0.0-rtm-beta1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting": "1.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
-          "NLog": "5.0.0-beta03"
+          "NLog": "5.0.0-beta04",
+          "System.AppContext": "4.3.0"
         },
         "compile": {
           "lib/netstandard1.3/NLog.Extensions.Logging.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/NLog.Extensions.Logging.dll": {}
+        }
+      },
+      "NLog.Web.AspNetCore/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Hosting": "1.0.0",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
+          "Microsoft.AspNetCore.Http.Extensions": "1.0.0",
+          "Microsoft.AspNetCore.Routing.Abstractions": "1.0.0",
+          "NLog": "5.0.0-beta04",
+          "NLog.Extensions.Logging": "1.0.0-rtm-beta1"
+        },
+        "compile": {
+          "lib/netstandard1.3/NLog.Web.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/NLog.Web.AspNetCore.dll": {}
         }
       },
       "Polly/5.0.1-v5-0-alpha0001": {
@@ -1234,7 +1268,7 @@
           "lib/netstandard1.0/Polly.dll": {}
         }
       },
-      "RabbitMQ.Client/4.1.0": {
+      "RabbitMQ.Client/4.1.1": {
         "type": "package",
         "dependencies": {
           "System.Collections.Concurrent": "4.0.12",
@@ -1283,6 +1317,20 @@
         },
         "runtime": {
           "lib/netstandard1.5/RawRabbit.Attributes.dll": {}
+        }
+      },
+      "RawRabbit.Extensions/1.10.3": {
+        "type": "package",
+        "dependencies": {
+          "RawRabbit": "1.10.3",
+          "RawRabbit.vNext": "1.10.3",
+          "System.Net.Http": "4.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.5/RawRabbit.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/RawRabbit.Extensions.dll": {}
         }
       },
       "RawRabbit.vNext/1.10.3": {
@@ -1532,7 +1580,7 @@
           }
         }
       },
-      "ServiceDesk.Common/1.0.7": {
+      "ServiceDesk.Common/1.0.14": {
         "type": "package",
         "dependencies": {
           "Autofac": "4.1.0",
@@ -1540,7 +1588,12 @@
           "Microsoft.AspNetCore.Hosting": "1.1.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
           "NETStandard.Library": "1.6.1",
-          "RawRabbit.Attributes": "1.10.3"
+          "NLog.Extensions.Logging": "1.0.0-rtm-beta1",
+          "RabbitMQ.Client": "4.1.1",
+          "RawRabbit": "1.10.3",
+          "RawRabbit.Attributes": "1.10.3",
+          "RawRabbit.Extensions": "1.10.3",
+          "RawRabbit.vNext": "1.10.3"
         },
         "compile": {
           "lib/netstandard1.6/ServiceDesk.Common.dll": {}
@@ -2186,6 +2239,32 @@
         },
         "compile": {
           "ref/netstandard1.3/System.IO.FileSystem.dll": {}
+        }
+      },
+      "System.IO.FileSystem.AccessControl/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.IO.FileSystem": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Security.AccessControl": "4.0.0",
+          "System.Security.Principal.Windows": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.IO.FileSystem.AccessControl.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.IO.FileSystem.AccessControl.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.3/System.IO.FileSystem.AccessControl.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.IO.FileSystem.Primitives/4.3.0": {
@@ -3697,12 +3776,12 @@
         "lib/netstandard1.3/AutoMapper.xml"
       ]
     },
-    "Coolector.Common/1.0.81": {
-      "sha512": "d665dki65ZY1GugHlqt/qNO8arQLuh22ENR9YRYe/uZCinfNBC0FoRE6abkeKjaASnpFu+87Hvd8pBWF56OyAA==",
+    "Coolector.Common/1.0.82": {
+      "sha512": "FnX4ihRoL+6C9UtmT/sH45LIuYYtpCohxq0rSC7z+fcB70KK5SNxjTGyBEq5f2tbeQqeVQQeCAE7v+b45i3OQw==",
       "type": "package",
-      "path": "Coolector.Common/1.0.81",
+      "path": "Coolector.Common/1.0.82",
       "files": [
-        "Coolector.Common.1.0.81.nupkg.sha512",
+        "Coolector.Common.1.0.82.nupkg.sha512",
         "Coolector.Common.nuspec",
         "lib/netstandard1.6/Coolector.Common.dll"
       ]
@@ -3878,6 +3957,19 @@
         "lib/net451/Microsoft.AspNetCore.Owin.xml",
         "lib/netstandard1.3/Microsoft.AspNetCore.Owin.dll",
         "lib/netstandard1.3/Microsoft.AspNetCore.Owin.xml"
+      ]
+    },
+    "Microsoft.AspNetCore.Routing.Abstractions/1.0.0": {
+      "sha512": "Ne5CFiD1xCGSHrGICw7PsVnj7gijfkMfsw52AO6ingcUhE01dc87cJPpfGLnY22MIvqn11ECLbNZYmzFp/Rs+A==",
+      "type": "package",
+      "path": "Microsoft.AspNetCore.Routing.Abstractions/1.0.0",
+      "files": [
+        "Microsoft.AspNetCore.Routing.Abstractions.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Routing.Abstractions.nuspec",
+        "lib/net451/Microsoft.AspNetCore.Routing.Abstractions.dll",
+        "lib/net451/Microsoft.AspNetCore.Routing.Abstractions.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Routing.Abstractions.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Routing.Abstractions.xml"
       ]
     },
     "Microsoft.AspNetCore.Server.Kestrel/1.1.0": {
@@ -4665,12 +4757,12 @@
         "tools/install.ps1"
       ]
     },
-    "NLog/5.0.0-beta03": {
-      "sha512": "gHneuDwvs11VlHSjoz+b9IRpEW3zHvX0ZGTQIgDBJnL9F1xxvbSC5/xsVTkyIuS2T/y1aCK4OAcIcO9P5m1Ocw==",
+    "NLog/5.0.0-beta04": {
+      "sha512": "kba9JT0qE8sLbBvTa6zxxh4sNLGdgWhQLuzFid/5vpakLuASIc2yI8b7yo+YTB5ZWM8vQDqIUQcFfuCgXYY99Q==",
       "type": "package",
-      "path": "NLog/5.0.0-beta03",
+      "path": "NLog/5.0.0-beta04",
       "files": [
-        "NLog.5.0.0-beta03.nupkg.sha512",
+        "NLog.5.0.0-beta04.nupkg.sha512",
         "NLog.nuspec",
         "lib/monoandroid23/NLog.dll",
         "lib/monoandroid23/NLog.xml",
@@ -4694,15 +4786,28 @@
         "lib/xamarinios10/NLog.xml"
       ]
     },
-    "NLog.Extensions.Logging/1.0.0-rtm-alpha5": {
-      "sha512": "EAyWzB2J1CbsLoXyeVDZRiiJ0gmnvkssnq3M7r6DHrtkqXyowCcnqLg+na0FYWQrVLcenmoJ+Lo466GHZ7RJ4A==",
+    "NLog.Extensions.Logging/1.0.0-rtm-beta1": {
+      "sha512": "qDOFhDKUtwoxAJBY2t1fVbxiKRhviA1vkW2Q6jMAWZHBN9KKRUBZQEOsfTLO6Er3CrgDeBXcn8YnSpPsfggW/w==",
       "type": "package",
-      "path": "NLog.Extensions.Logging/1.0.0-rtm-alpha5",
+      "path": "NLog.Extensions.Logging/1.0.0-rtm-beta1",
       "files": [
-        "NLog.Extensions.Logging.1.0.0-rtm-alpha5.nupkg.sha512",
+        "NLog.Extensions.Logging.1.0.0-rtm-beta1.nupkg.sha512",
         "NLog.Extensions.Logging.nuspec",
         "lib/net451/NLog.Extensions.Logging.dll",
         "lib/netstandard1.3/NLog.Extensions.Logging.dll"
+      ]
+    },
+    "NLog.Web.AspNetCore/4.3.0": {
+      "sha512": "bejG5P4Qe3mzLF5bojmIt1TvvwXMOM1O/wIs7VuTDpBCRqyk/s3MGLY/DHedLAqpbdLStaLm5CmuFlVHgn8gsg==",
+      "type": "package",
+      "path": "NLog.Web.AspNetCore/4.3.0",
+      "files": [
+        "NLog.Web.AspNetCore.4.3.0.nupkg.sha512",
+        "NLog.Web.AspNetCore.nuspec",
+        "lib/net451/NLog.Web.AspNetCore.dll",
+        "lib/net451/NLog.Web.AspNetCore.xml",
+        "lib/netstandard1.3/NLog.Web.AspNetCore.dll",
+        "lib/netstandard1.3/NLog.Web.AspNetCore.xml"
       ]
     },
     "Polly/5.0.1-v5-0-alpha0001": {
@@ -4723,15 +4828,17 @@
         "lib/portable-net45+netcore45+wpa81+wp8/Polly.pdb"
       ]
     },
-    "RabbitMQ.Client/4.1.0": {
-      "sha512": "kRSynszpUNVgklJWK211sWMPtTUufexmgXtOD90hsqgT9YLACL/cb3+SPbb6sy8MwweNt71TkQFjOVjX3B0NOQ==",
+    "RabbitMQ.Client/4.1.1": {
+      "sha512": "KrIEo53c7/WGez9cdA38VOg7dbvBY0RacVqE8eoz/WXtBtpfeNO7tolND+H5J3JbVrFujhkQf4I5cq5ACeBpTg==",
       "type": "package",
-      "path": "RabbitMQ.Client/4.1.0",
+      "path": "RabbitMQ.Client/4.1.1",
       "files": [
-        "RabbitMQ.Client.4.1.0.nupkg.sha512",
+        "RabbitMQ.Client.4.1.1.nupkg.sha512",
         "RabbitMQ.Client.nuspec",
         "lib/net451/RabbitMQ.Client.dll",
-        "lib/netstandard1.5/RabbitMQ.Client.dll"
+        "lib/net451/RabbitMQ.Client.xml",
+        "lib/netstandard1.5/RabbitMQ.Client.dll",
+        "lib/netstandard1.5/RabbitMQ.Client.xml"
       ]
     },
     "RawRabbit/1.10.3": {
@@ -4754,6 +4861,17 @@
         "RawRabbit.Attributes.nuspec",
         "lib/net451/RawRabbit.Attributes.dll",
         "lib/netstandard1.5/RawRabbit.Attributes.dll"
+      ]
+    },
+    "RawRabbit.Extensions/1.10.3": {
+      "sha512": "NA/P/Z62ECjjo7mjtEeN5GRvoz6ns8AjKvmmicVM1Q/jV5ELkWOmVPdGp9Gr2QMzahl8WQr5TkRVgq+qZhvWDw==",
+      "type": "package",
+      "path": "RawRabbit.Extensions/1.10.3",
+      "files": [
+        "RawRabbit.Extensions.1.10.3.nupkg.sha512",
+        "RawRabbit.Extensions.nuspec",
+        "lib/net451/RawRabbit.Extensions.dll",
+        "lib/netstandard1.5/RawRabbit.Extensions.dll"
       ]
     },
     "RawRabbit.vNext/1.10.3": {
@@ -5027,12 +5145,12 @@
         "runtimes/win7-x86/native/sni.dll"
       ]
     },
-    "ServiceDesk.Common/1.0.7": {
-      "sha512": "vWf6c7v7Y0iBz7dXujwRSDGIeiGJG9TyU/Bza2UvkQ215xMmFvUyGsqay3swD4cEkWYpuGbdkur0VhWf7U0sag==",
+    "ServiceDesk.Common/1.0.14": {
+      "sha512": "jtwFy+Lu2TiMOX07PTk3AeinD3T3sljooR31/KiS/SkJEfr5g5kYI7uZbb1shYzwE0jImWQHJCWPs1HqKdnrgA==",
       "type": "package",
-      "path": "ServiceDesk.Common/1.0.7",
+      "path": "ServiceDesk.Common/1.0.14",
       "files": [
-        "ServiceDesk.Common.1.0.7.nupkg.sha512",
+        "ServiceDesk.Common.1.0.14.nupkg.sha512",
         "ServiceDesk.Common.nuspec",
         "lib/netstandard1.6/ServiceDesk.Common.dll"
       ]
@@ -6599,6 +6717,34 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "System.IO.FileSystem.AccessControl/4.0.0": {
+      "sha512": "I80oVypfOvG0y0D8d0/0X/RIcAbJaFkTToy9sRJdVDVIAEImgMBEmSxxs8XpCP0PByWhOpxjRjcaGHdvNTbIUg==",
+      "type": "package",
+      "path": "System.IO.FileSystem.AccessControl/4.0.0",
+      "files": [
+        "System.IO.FileSystem.AccessControl.4.0.0.nupkg.sha512",
+        "System.IO.FileSystem.AccessControl.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/net46/System.IO.FileSystem.AccessControl.dll",
+        "ref/net46/System.IO.FileSystem.AccessControl.dll",
+        "ref/netstandard1.3/System.IO.FileSystem.AccessControl.dll",
+        "ref/netstandard1.3/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/de/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/es/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/fr/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/it/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/ja/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/ko/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/ru/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/zh-hans/System.IO.FileSystem.AccessControl.xml",
+        "ref/netstandard1.3/zh-hant/System.IO.FileSystem.AccessControl.xml",
+        "runtimes/unix/lib/netstandard1.3/System.IO.FileSystem.AccessControl.dll",
+        "runtimes/win/lib/net46/System.IO.FileSystem.AccessControl.dll",
+        "runtimes/win/lib/netcore50/_._",
+        "runtimes/win/lib/netstandard1.3/System.IO.FileSystem.AccessControl.dll"
       ]
     },
     "System.IO.FileSystem.Primitives/4.3.0": {
@@ -9977,8 +10123,14 @@
       "Microsoft.Extensions.Configuration.Json >= 1.1.0",
       "NETStandard.Library >= 1.6.1",
       "NLog.Extensions.Logging >= 1.0.0-*",
+      "NLog.Web.AspNetCore >= 4.3.0",
       "Nancy >= 2.0.0-barneyrubble",
       "Polly >= 5.0.1-v5-0-alpha0001",
+      "RabbitMQ.Client >= 4.1.1",
+      "RawRabbit >= 1.10.3",
+      "RawRabbit.Attributes >= 1.10.3",
+      "RawRabbit.Extensions >= 1.10.3",
+      "RawRabbit.vNext >= 1.10.3",
       "ServiceDesk.Common >= 1.0.*"
     ],
     ".NETCoreApp,Version=v1.1": [

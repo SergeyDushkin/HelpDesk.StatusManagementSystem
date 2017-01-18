@@ -31,12 +31,21 @@ namespace servicedesk.StatusManagementSystem.Handlers
 
             await _handler
                 .Run(async () => await _statusManager.SetNextStatusAsync(command.SourceId, command.ReferenceId, command.StatusId, command.UserId, command.Message))
-                .OnSuccess(async () => await _bus.PublishAsync(new NextStatusSet(command.Request.Id, command.SourceId, command.ReferenceId, command.StatusId)))
-                .OnCustomError(async (ex, logger) => await _bus.PublishAsync(new SetNewStatusRejected(command.Request.Id, "error", "Error when trying to set new status.")))
+                .OnSuccess(async () => await _bus.PublishAsync(
+                    new NextStatusSet(command.Request.Id, command.SourceId, command.ReferenceId, command.StatusId), 
+                    command.Request.Id, 
+                    cfg => cfg.WithExchange(e => e.WithName("servicedesk.statusmanagementsystem.events")).WithRoutingKey("nextstatusset")))
+                .OnCustomError(async (ex, logger) => await _bus.PublishAsync(
+                    new SetNewStatusRejected(command.Request.Id, "error", "Error when trying to set new status."), 
+                    command.Request.Id, 
+                    cfg => cfg.WithExchange(e => e.WithName("servicedesk.statusmanagementsystem.events")).WithRoutingKey("setnewstatusrejected")))
                 .OnError(async (ex, logger) => 
                 {
                     logger.Error(ex, "Error when trying to set new status.");
-                    await _bus.PublishAsync(new SetNewStatusRejected(command.Request.Id, "error", "Error when trying to set new status."));
+                    await _bus.PublishAsync(
+                        new SetNewStatusRejected(command.Request.Id, "error", "Error when trying to set new status."), 
+                        command.Request.Id, 
+                        cfg => cfg.WithExchange(e => e.WithName("servicedesk.statusmanagementsystem.events")).WithRoutingKey("setnewstatusrejected"));
                 })
                 .ExecuteAsync();
         }
