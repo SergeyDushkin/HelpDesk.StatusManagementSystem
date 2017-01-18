@@ -1,5 +1,5 @@
-﻿using Coolector.Common.Host;
-using servicedesk.Common.Commands;
+﻿using servicedesk.Common.Commands;
+using servicedesk.Common.Host;
 using servicedesk.StatusManagementSystem.Framework;
 
 namespace servicedesk.StatusManagementSystem
@@ -12,7 +12,7 @@ namespace servicedesk.StatusManagementSystem
                 .Create<Startup>(port: 10010)
                 .UseAutofac(Bootstrapper.LifeTimeScope)
                 .UseRabbitMq(queueName: typeof(Program).Namespace)
-                .SubscribeToCommand<SetStatus>()
+                .SubscribeToCommand<SetStatus>("setstatus")
                 .Build()
                 .Run();
         }

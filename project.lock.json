@@ -33,7 +33,7 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
-      "Coolector.Common/1.0.80": {
+      "Coolector.Common/1.0.81": {
         "type": "package",
         "dependencies": {
           "AutoMapper": "5.2.0",
@@ -1273,6 +1273,18 @@
           "lib/netstandard1.5/RawRabbit.dll": {}
         }
       },
+      "RawRabbit.Attributes/1.10.3": {
+        "type": "package",
+        "dependencies": {
+          "RawRabbit": "1.10.3"
+        },
+        "compile": {
+          "lib/netstandard1.5/RawRabbit.Attributes.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/RawRabbit.Attributes.dll": {}
+        }
+      },
       "RawRabbit.vNext/1.10.3": {
         "type": "package",
         "dependencies": {
@@ -1520,11 +1532,13 @@
           }
         }
       },
-      "ServiceDesk.Common/1.0.3": {
+      "ServiceDesk.Common/1.0.6": {
         "type": "package",
         "dependencies": {
-          "Coolector.Common": "1.0.80",
-          "NETStandard.Library": "1.6.1"
+          "Autofac": "4.1.0",
+          "Coolector.Common": "1.0.81",
+          "NETStandard.Library": "1.6.1",
+          "RawRabbit.Attributes": "1.10.3"
         },
         "compile": {
           "lib/netstandard1.6/ServiceDesk.Common.dll": {}
@@ -3681,12 +3695,12 @@
         "lib/netstandard1.3/AutoMapper.xml"
       ]
     },
-    "Coolector.Common/1.0.80": {
-      "sha512": "9kkFZAGbOfqtSIKyE+gekDMHiVLVUtyC6uPNwPGcQuNo75t/Q/CiA7QCnSHM/qPZ33+gLsJPa3zoZN6kSgGStw==",
+    "Coolector.Common/1.0.81": {
+      "sha512": "d665dki65ZY1GugHlqt/qNO8arQLuh22ENR9YRYe/uZCinfNBC0FoRE6abkeKjaASnpFu+87Hvd8pBWF56OyAA==",
       "type": "package",
-      "path": "Coolector.Common/1.0.80",
+      "path": "Coolector.Common/1.0.81",
       "files": [
-        "Coolector.Common.1.0.80.nupkg.sha512",
+        "Coolector.Common.1.0.81.nupkg.sha512",
         "Coolector.Common.nuspec",
         "lib/netstandard1.6/Coolector.Common.dll"
       ]
@@ -4729,6 +4743,17 @@
         "lib/netstandard1.5/RawRabbit.dll"
       ]
     },
+    "RawRabbit.Attributes/1.10.3": {
+      "sha512": "msZPQ+hOzy1htKZAasA9Yj5p04fF6vvFOcko/J0XmPINnkZ512ZKC3V6cFSu8ki/Q+7eVkwfPWAWPqDNRC9Dmw==",
+      "type": "package",
+      "path": "RawRabbit.Attributes/1.10.3",
+      "files": [
+        "RawRabbit.Attributes.1.10.3.nupkg.sha512",
+        "RawRabbit.Attributes.nuspec",
+        "lib/net451/RawRabbit.Attributes.dll",
+        "lib/netstandard1.5/RawRabbit.Attributes.dll"
+      ]
+    },
     "RawRabbit.vNext/1.10.3": {
       "sha512": "9T0+961GcfkZ4DF3FqzvTbG2aqob//1eTnDxkoaHQR28ZnnxSE5okrX/8VFBWe2Klh5wy0unA+kPQWpIq6eIew==",
       "type": "package",
@@ -5000,12 +5025,12 @@
         "runtimes/win7-x86/native/sni.dll"
       ]
     },
-    "ServiceDesk.Common/1.0.3": {
-      "sha512": "aoC3kqOupgEvAur/gzoYG14fNqMIrUmEqDwiuSvSBJ0DTZCUPCKcJ3P7k5IEDdScYmt+zibUnhIHoDkX1ATooQ==",
+    "ServiceDesk.Common/1.0.6": {
+      "sha512": "JcH2sNCCpARM2fVjQ8jhXTCsHXh1Gc2yF0dCGufoit77ferIyVjy+1RZlWuzJclsblXSrlljhunDAQIeo0xG3g==",
       "type": "package",
-      "path": "ServiceDesk.Common/1.0.3",
+      "path": "ServiceDesk.Common/1.0.6",
       "files": [
-        "ServiceDesk.Common.1.0.3.nupkg.sha512",
+        "ServiceDesk.Common.1.0.6.nupkg.sha512",
         "ServiceDesk.Common.nuspec",
         "lib/netstandard1.6/ServiceDesk.Common.dll"
       ]
