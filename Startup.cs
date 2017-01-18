@@ -33,7 +33,8 @@ namespace servicedesk.StatusManagementSystem
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddNLog();
-            //env.ConfigureNLog("nlog.config");
+            loggerFactory.ConfigureNLog("nlog.config");
+            
             app.UseOwin().UseNancy(x => x.Bootstrapper = new Bootstrapper(Configuration));
         }
     }
