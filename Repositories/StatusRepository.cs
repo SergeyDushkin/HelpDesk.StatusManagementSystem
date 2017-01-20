@@ -1,5 +1,5 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using servicedesk.StatusManagementSystem.Dal;
 using servicedesk.StatusManagementSystem.Domain;
@@ -17,11 +17,11 @@ namespace servicedesk.StatusManagementSystem.Repositories
             _database.ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
-        public async Task<IQueryable<Status>> GetAllAsync(Guid sourceId)
-            => await _database.Statuses.GetAllAsync(sourceId);
+        public Task<IEnumerable<Status>> GetAllAsync(Guid sourceId)
+            => _database.Statuses.GetAllAsync(sourceId);
         
-        public async Task<Status> GetAsync(Guid id)
-            => await _database.Statuses.GetByIdAsync(id);
+        public Task<Status> GetAsync(Guid id)
+            => _database.Statuses.GetByIdAsync(id);
 
         public async Task AddAsync(Status status) 
         {

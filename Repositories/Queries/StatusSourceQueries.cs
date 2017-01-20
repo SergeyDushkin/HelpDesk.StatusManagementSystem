@@ -3,16 +3,16 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Coolector.Common.Extensions;
-using Coolector.Common.Types;
 using servicedesk.StatusManagementSystem.Domain;
+using System.Collections.Generic;
 
 namespace servicedesk.StatusManagementSystem.Repositories.Queries
 {
     public static class StatusSourceQueries
     {
-        public static async Task<Maybe<PagedResult<StatusSource>>> GetAllAsync(this IQueryable<StatusSource> statusSources)
+        public static async Task<IEnumerable<StatusSource>> GetAllAsync(this IQueryable<StatusSource> statusSources)
         {
-            return await Task.FromResult(statusSources.AsQueryable().Paginate(1, 100));
+            return await statusSources.ToListAsync();
         }
         public static async Task<StatusSource> GetByIdAsync(this IQueryable<StatusSource> statusSources, Guid id)
         {

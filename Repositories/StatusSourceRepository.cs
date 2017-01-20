@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Coolector.Common.Types;
 using servicedesk.StatusManagementSystem.Dal;
 using servicedesk.StatusManagementSystem.Domain;
 using servicedesk.StatusManagementSystem.Repositories.Queries;
@@ -17,13 +17,14 @@ namespace servicedesk.StatusManagementSystem.Repositories
             _database.ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
-        public async Task<Maybe<PagedResult<StatusSource>>> GetAllAsync()
-            => await _database.StatusSources.GetAllAsync();
+        public Task<IEnumerable<StatusSource>> GetAllAsync()
+            => _database.StatusSources.GetAllAsync();
         
-        public async Task<Maybe<StatusSource>> GetAsync(Guid id)
-            => await _database.StatusSources.GetByIdAsync(id);
-        public async Task<Maybe<StatusSource>> GetAsync(string name)
-            => await _database.StatusSources.GetByNameAsync(name);
+        public Task<StatusSource> GetAsync(Guid id)
+            => _database.StatusSources.GetByIdAsync(id);
+
+        public Task<StatusSource> GetAsync(string name)
+            => _database.StatusSources.GetByNameAsync(name);
 
         public async Task AddAsync(StatusSource statusSource) 
         {

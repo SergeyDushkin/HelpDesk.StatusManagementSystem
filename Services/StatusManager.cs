@@ -22,17 +22,17 @@ namespace servicedesk.StatusManagementSystem.Services
             var currentEvent = await _statusEventService.GetCurrentAsync(referenceId);
             var statuses = await _statusService.GetAllAsync(sourceId);
 
-            if (currentEvent.HasNoValue)
+            if (currentEvent == null)
             {
                 return statuses.Where(r => r.Step == 1).OrderBy(r => r.Order); 
             }
 
-            if (currentEvent.Value.Status.IsFinal) 
+            if (currentEvent.Status.IsFinal) 
             {
                 return default(IEnumerable<Status>);
             }
 
-            var step = currentEvent.Value.Status.Step + 1;
+            var step = currentEvent.Status.Step + 1;
 
             return statuses.Where(r => r.Step == step).OrderBy(r => r.Order);
         }

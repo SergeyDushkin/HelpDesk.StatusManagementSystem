@@ -13,7 +13,7 @@ namespace servicedesk.StatusManagementSystem.Modules
             : base(mapper, "sources")
         {
             Get("", args => FetchCollection<BrowseStatusSource, StatusSource>
-                (async x => await statusSourceService.GetAllAsync())
+                (async x => (await statusSourceService.GetAllAsync()).PaginateWithoutLimit())
                 .MapTo<StatusSourceDto>()
                 .HandleAsync());
 
@@ -35,18 +35,18 @@ namespace servicedesk.StatusManagementSystem.Modules
             Get("{name}/statuses", args => FetchCollection<BrowseStatusBySourceName, Status>
                 (async x => {
                     var source = await statusSourceService.GetAsync(x.Name);
-                    return (await statusService.GetAllAsync(source.Value.Id)).PaginateWithoutLimit();
+                    return (await statusService.GetAllAsync(source.Id)).PaginateWithoutLimit();
                 })
                 .MapTo<StatusDto>()
                 .HandleAsync());
 
             Get("{sourceId:guid}/events/{referenceId:guid}", args => FetchCollection<BrowseEventStatus, StatusEvent>
-                (async x => await statusEventService.GetAsync(x.ReferenceId))
+                (async x => (await statusEventService.GetAsync(x.ReferenceId)).PaginateWithoutLimit())
                 .MapTo<StatusEventDto>()
                 .HandleAsync());
 
             Get("{name}/{referenceId:guid}", args => FetchCollection<BrowseEventStatus, StatusEvent>
-                (async x => await statusEventService.GetAsync(x.ReferenceId))
+                (async x => (await statusEventService.GetAsync(x.ReferenceId)).PaginateWithoutLimit())
                 .MapTo<StatusEventDto>()
                 .HandleAsync());
 
@@ -68,7 +68,7 @@ namespace servicedesk.StatusManagementSystem.Modules
             Get("{name}/{referenceId:guid}/next", args => FetchCollection<BrowseEventStatus, Status>
                 (async x => {
                     var source = await statusSourceService.GetAsync(x.Name);
-                    return (await statusManager.GetNextStatuses(source.Value.Id, x.ReferenceId)).PaginateWithoutLimit();
+                    return (await statusManager.GetNextStatuses(source.Id, x.ReferenceId)).PaginateWithoutLimit();
                 })
                 .MapTo<StatusDto>()
                 .HandleAsync());

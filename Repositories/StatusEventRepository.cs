@@ -1,11 +1,10 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Coolector.Common.Types;
 using servicedesk.StatusManagementSystem.Dal;
 using servicedesk.StatusManagementSystem.Domain;
 using servicedesk.StatusManagementSystem.Repositories.Queries;
 using NLog;
+using System.Collections.Generic;
 
 namespace servicedesk.StatusManagementSystem.Repositories
 {
@@ -21,14 +20,15 @@ namespace servicedesk.StatusManagementSystem.Repositories
             _database.ChangeTracker.AutoDetectChangesEnabled = false;
         }
         
-        public async Task<Maybe<PagedResult<StatusEvent>>> GetAsync(Guid referenceId)
-            => await _database.StatusEvents.GetByReferanceIdAsync(referenceId);
+        public Task<IEnumerable<StatusEvent>> GetAsync(Guid referenceId)
+            => _database.StatusEvents.GetByReferanceIdAsync(referenceId);
 
-        public IQueryable<StatusEvent> Get(Guid referenceId) => _database.StatusEvents.GetByReferanceId(referenceId);
+        public Task<StatusEvent> GetCurrentByReferenceIdAsync(Guid referenceId) 
+            => _database.StatusEvents.GetCurrentByReferanceIdAsync(referenceId);
 
         public async Task AddAsync(StatusEvent statusEvent) 
         {
-            Logger.Info("Add Statis event: {0}", Newtonsoft.Json.JsonConvert.SerializeObject(statusEvent));
+            Logger.Info("Add Status event: {0}", Newtonsoft.Json.JsonConvert.SerializeObject(statusEvent));
 
             await _database.StatusEvents.AddAsync(statusEvent);
             await _database.SaveChangesAsync();

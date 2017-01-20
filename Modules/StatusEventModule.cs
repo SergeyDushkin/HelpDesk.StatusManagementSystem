@@ -1,4 +1,5 @@
 using AutoMapper;
+using Coolector.Common.Extensions;
 using servicedesk.StatusManagementSystem.Domain;
 using servicedesk.StatusManagementSystem.Dto;
 using servicedesk.StatusManagementSystem.Queries;
@@ -12,7 +13,7 @@ namespace servicedesk.StatusManagementSystem.Modules
             : base(mapper, "statusEvents")
         {
             Get("{referenceId}", args => FetchCollection<BrowseEventStatus, StatusEvent>
-                (async x => await statusEventService.GetAsync(x.ReferenceId))
+                (async x => (await statusEventService.GetAsync(x.ReferenceId)).PaginateWithoutLimit())
                 .MapTo<StatusEventDto>()
                 .HandleAsync());
 

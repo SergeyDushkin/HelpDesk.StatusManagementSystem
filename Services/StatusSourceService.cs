@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Coolector.Common.Types;
 using servicedesk.StatusManagementSystem.Domain;
 using servicedesk.StatusManagementSystem.Repositories;
 
@@ -15,13 +15,14 @@ namespace servicedesk.StatusManagementSystem.Services
             _statusSourceRepository = statusSourceRepository;
         }
 
-        public async Task<Maybe<PagedResult<StatusSource>>> GetAllAsync()
-            => await _statusSourceRepository.GetAllAsync();
+        public Task<IEnumerable<StatusSource>> GetAllAsync()
+            => _statusSourceRepository.GetAllAsync();
 
-        public async Task<Maybe<StatusSource>> GetAsync(Guid id)
-            => await _statusSourceRepository.GetAsync(id);
-        public async Task<Maybe<StatusSource>> GetAsync(string name)
-            => await _statusSourceRepository.GetAsync(name);
+        public Task<StatusSource> GetAsync(Guid id)
+            => _statusSourceRepository.GetAsync(id);
+            
+        public Task<StatusSource> GetAsync(string name)
+            => _statusSourceRepository.GetAsync(name);
 
         public async Task CreateAsync(string userId, string name, string description, DateTime createdAt)
         {
@@ -32,11 +33,11 @@ namespace servicedesk.StatusManagementSystem.Services
         private async Task UpdateAsync(Guid id, Action<StatusSource> update)
         {
             var statusEvent = await _statusSourceRepository.GetAsync(id);
-            if (statusEvent.HasNoValue)
+            if (statusEvent == null)
                 return;
 
-            update(statusEvent.Value);
-            await _statusSourceRepository.UpdateAsync(statusEvent.Value);
+            update(statusEvent);
+            await _statusSourceRepository.UpdateAsync(statusEvent);
         }
     }
 }

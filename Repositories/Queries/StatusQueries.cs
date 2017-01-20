@@ -4,14 +4,15 @@ using System.Linq;
 using Coolector.Common.Extensions;
 using servicedesk.StatusManagementSystem.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace servicedesk.StatusManagementSystem.Repositories.Queries
 {
     public static class StatusQueries
     {
-        public static async Task<IQueryable<Status>> GetAllAsync(this IQueryable<Status> statuses, Guid sourceId)
+        public static async Task<IEnumerable<Status>> GetAllAsync(this IQueryable<Status> statuses, Guid sourceId)
         {
-            return await Task.FromResult(statuses.AsQueryable().Where(r => r.SourceId == sourceId).OrderBy(r => r.Step).ThenBy(r => r.Order));
+            return await statuses.Where(r => r.SourceId == sourceId).OrderBy(r => r.Step).ThenBy(r => r.Order).ToListAsync();
         }
 
         public static async Task<Status> GetByIdAsync(this IQueryable<Status> statuses, Guid id)

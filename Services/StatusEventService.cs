@@ -1,7 +1,6 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Coolector.Common.Types;
 using servicedesk.StatusManagementSystem.Domain;
 using servicedesk.StatusManagementSystem.Repositories;
 
@@ -16,10 +15,11 @@ namespace servicedesk.StatusManagementSystem.Services
             _statusEventRepository = statusEventRepository;
         }
 
-        public async Task<Maybe<PagedResult<StatusEvent>>> GetAsync(Guid referenceId)
-            => await _statusEventRepository.GetAsync(referenceId);
-        public async Task<Maybe<StatusEvent>> GetCurrentAsync(Guid referenceId) 
-            => await Task.FromResult(_statusEventRepository.Get(referenceId).Where(r => !r.IsUndo).OrderByDescending(r => r.Date).FirstOrDefault());
+        public Task<IEnumerable<StatusEvent>> GetAsync(Guid referenceId)
+            => _statusEventRepository.GetAsync(referenceId);
+            
+        public Task<StatusEvent> GetCurrentAsync(Guid referenceId) 
+            => _statusEventRepository.GetCurrentByReferenceIdAsync(referenceId);
 
         public async Task CreateAsync(Guid referenceId, Guid sourceId, Guid statusId, string userId, string message, DateTime createdAt)
         {
