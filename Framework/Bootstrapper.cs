@@ -76,9 +76,8 @@ namespace servicedesk.StatusManagementSystem.Framework
             {
                 var optionsBuilder = new DbContextOptionsBuilder<StatusDbContext>();
                 optionsBuilder.UseSqlServer(_configuration.GetConnectionString("StatusDatabase"));
-                var db = new StatusDbContext(optionsBuilder.Options);
-
-                builder.RegisterInstance(db).InstancePerRequest().SingleInstance();
+                
+                builder.RegisterType<StatusDbContext>().WithParameter("options", optionsBuilder.Options).AsSelf();
 
                 builder.RegisterInstance(AutoMapperConfig.InitializeMapper());
                 builder.RegisterInstance(_configuration.GetSettings<ExceptionlessSettings>()).SingleInstance();
