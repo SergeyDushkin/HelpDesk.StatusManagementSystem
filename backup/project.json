@@ -18,7 +18,7 @@
     "Microsoft.EntityFrameworkCore": "1.1.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
     "Exceptionless": "4.0.1924",
-    "Coolector.Common": "1.0.*",
+    "Collectively.Common": "1.0.*",
     "NETStandard.Library": "1.6.1",
     "Polly": "5.0.1-v5-0-alpha0001",
     

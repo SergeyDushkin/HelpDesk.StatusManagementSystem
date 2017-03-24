@@ -1,5 +1,5 @@
 using AutoMapper;
-using Coolector.Common.Nancy;
+using Collectively.Common.Nancy;
 
 namespace servicedesk.StatusManagementSystem.Modules
 {

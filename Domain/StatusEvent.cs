@@ -1,6 +1,6 @@
 using System;
-using Coolector.Common.Domain;
-using Coolector.Common.Extensions;
+using Collectively.Common.Domain;
+using Collectively.Common.Extensions;
 
 namespace servicedesk.StatusManagementSystem.Domain
 {

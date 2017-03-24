@@ -1,5 +1,5 @@
 using System;
-using Coolector.Common.Domain;
+using Collectively.Common.Domain;
 
 namespace servicedesk.StatusManagementSystem.Domain
 {

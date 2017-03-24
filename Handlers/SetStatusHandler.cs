@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Coolector.Common.Services;
+using Collectively.Common.Services;
 using RawRabbit;
 using servicedesk.Common.Commands;
 using servicedesk.Common.Events;

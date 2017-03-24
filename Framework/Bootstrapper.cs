@@ -4,10 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Nancy;
 using Nancy.Bootstrapper;
 using NLog;
-using Coolector.Common.Services;
-using Coolector.Common.Nancy;
-using Coolector.Common.Extensions;
-using Coolector.Common.Exceptionless;
+using Collectively.Common.Services;
+using Collectively.Common.Nancy;
+using Collectively.Common.Extensions;
+using Collectively.Common.Exceptionless;
 using servicedesk.Common.Commands;
 using servicedesk.Common.Events;
 using servicedesk.StatusManagementSystem.Repositories;
@@ -25,6 +25,7 @@ using RabbitMQ.Client.Exceptions;
 using RawRabbit;
 using RawRabbit.Configuration;
 using RawRabbit.vNext;
+using Nancy.Bootstrappers.Autofac;
 
 namespace servicedesk.StatusManagementSystem.Framework
 {
@@ -48,7 +49,7 @@ namespace servicedesk.StatusManagementSystem.Framework
 
         protected override void ConfigureApplicationContainer(ILifetimeScope container)
         {
-            Logger.Info("Coolector.Services.Storage Configuring application container");
+            Logger.Info("Collectively.Services.Storage Configuring application container");
             base.ConfigureApplicationContainer(container);
 
             var rmqRetryPolicy = Policy

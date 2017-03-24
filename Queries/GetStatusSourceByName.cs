@@ -1,4 +1,4 @@
-using Coolector.Common.Queries;
+using Collectively.Common.Queries;
 
 namespace servicedesk.StatusManagementSystem.Queries
 {

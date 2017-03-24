@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Coolector.Common.Extensions;
+using Collectively.Common.Extensions;
 using servicedesk.StatusManagementSystem.Domain;
 using System.Collections.Generic;
 

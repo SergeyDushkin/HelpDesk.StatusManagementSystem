@@ -33,7 +33,7 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
-      "Coolector.Common/1.0.82": {
+      "Collectively.Common/1.0.82": {
         "type": "package",
         "dependencies": {
           "AutoMapper": "5.2.0",
@@ -57,10 +57,10 @@
           "jose-jwt": "2.1.0"
         },
         "compile": {
-          "lib/netstandard1.6/Coolector.Common.dll": {}
+          "lib/netstandard1.6/Collectively.Common.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.6/Coolector.Common.dll": {}
+          "lib/netstandard1.6/Collectively.Common.dll": {}
         }
       },
       "Exceptionless/4.0.1924": {
@@ -3776,14 +3776,14 @@
         "lib/netstandard1.3/AutoMapper.xml"
       ]
     },
-    "Coolector.Common/1.0.82": {
+    "Collectively.Common/1.0.82": {
       "sha512": "FnX4ihRoL+6C9UtmT/sH45LIuYYtpCohxq0rSC7z+fcB70KK5SNxjTGyBEq5f2tbeQqeVQQeCAE7v+b45i3OQw==",
       "type": "package",
-      "path": "Coolector.Common/1.0.82",
+      "path": "Collectively.Common/1.0.82",
       "files": [
-        "Coolector.Common.1.0.82.nupkg.sha512",
-        "Coolector.Common.nuspec",
-        "lib/netstandard1.6/Coolector.Common.dll"
+        "Collectively.Common.1.0.82.nupkg.sha512",
+        "Collectively.Common.nuspec",
+        "lib/netstandard1.6/Collectively.Common.dll"
       ]
     },
     "Exceptionless/4.0.1924": {
@@ -10111,7 +10111,7 @@
     "": [
       "AutoMapper >= 5.2.0",
       "Autofac >= 4.2.1",
-      "Coolector.Common >= 1.0.*",
+      "Collectively.Common >= 1.0.*",
       "Exceptionless >= 4.0.1924",
       "Microsoft.AspNetCore.Hosting >= 1.1.0",
       "Microsoft.AspNetCore.Owin >= 1.1.0",
